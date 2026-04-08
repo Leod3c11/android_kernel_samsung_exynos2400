@@ -645,7 +645,6 @@ static void module_unload_free(struct module *mod)
 	mutex_unlock(&module_mutex);
 }
 
-#ifdef CONFIG_MODULE_FORCE_UNLOAD
 static inline int try_force_unload(unsigned int flags)
 {
 	int ret = (flags & O_TRUNC);
@@ -653,12 +652,6 @@ static inline int try_force_unload(unsigned int flags)
 		add_taint(TAINT_FORCED_RMMOD, LOCKDEP_NOW_UNRELIABLE);
 	return ret;
 }
-#else
-static inline int try_force_unload(unsigned int flags)
-{
-	return 0;
-}
-#endif /* CONFIG_MODULE_FORCE_UNLOAD */
 
 /* Try to release refcount of module, 0 means success. */
 static int try_release_module_ref(struct module *mod)
@@ -1029,14 +1022,10 @@ static const char vermagic[] = VERMAGIC_STRING;
 
 int try_to_force_load(struct module *mod, const char *reason)
 {
-#ifdef CONFIG_MODULE_FORCE_LOAD
 	if (!test_taint(TAINT_FORCED_MODULE))
 		pr_warn("%s: %s: kernel tainted.\n", mod->name, reason);
 	add_taint_module(mod, TAINT_FORCED_MODULE, LOCKDEP_NOW_UNRELIABLE);
 	return 0;
-#else
-	return -ENOEXEC;
-#endif
 }
 
 static char *get_modinfo(const struct load_info *info, const char *tag);
