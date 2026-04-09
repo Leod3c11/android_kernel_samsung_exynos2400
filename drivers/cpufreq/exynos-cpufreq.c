@@ -1503,9 +1503,11 @@ static int init_domain(struct exynos_cpufreq_domain *domain, struct device_node 
 	domain->min_freq = cal_dfs_get_min_freq(domain->cal_id);
 
 	if (!of_property_read_u32(dn, "max-freq", &freq))
-		domain->max_freq = min(domain->max_freq, freq);
+		domain->max_freq = freq;
+		// domain->max_freq = min(domain->max_freq, freq);
 	if (!of_property_read_u32(dn, "min-freq", &freq))
-		domain->min_freq = max(domain->min_freq, freq);
+		// domain->min_freq = max(domain->min_freq, freq);
+		domain->min_freq = freq;
 
 	/* Get freq-table from device tree and cut the out of range */
 	raw_table_size = of_property_count_u32_elems(dn, "freq-table");
