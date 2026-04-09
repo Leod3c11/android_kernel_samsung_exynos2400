@@ -1,0 +1,40 @@
+/*
+ * SAMSUNG SGPU device tree sourceA
+ *
+ * Copyright (c) 2022 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+
+#include "s5e9945-sgpu_common.dtsi"
+
+/{
+	/* sgpu */
+	sgpu: sgpu@22200000 {
+		chip_revision = <0x02600200>;
+
+		/* GPU DVFS */
+		freq_table = <80000 252000 350000 456000 545000 648000 710000 806000 883000 937000 1095000 1109000>;
+		min_freq = <80000>;
+		max_freq = <1109000>;
+		min_threshold = "0 350000:60 456000:65 937000:78";
+		max_threshold = "75 350000:80 545000:85 937000:95";
+		downstay_time = "32 456000:64 545000:160";
+		mif_min_lock = "350000 456000:1352000 545000:2028000 710000:2730000 937000:3172000 1095000:3738000 1109000:4206000";
+		mif_cl_boost_min_lock = "456000 545000:1014000 648000:1352000 710000:1539000 883000:1716000 937000:2028000";
+		cl_boost_freq = <1109000>;
+		mo_scenario = "default 648000:g3d_performance";
+		llc_ways = "0 500000:16";
+		highspeed_freq = <1109000>;
+		highspeed_load = <50>;
+		highspeed_delay = <0>;
+		ifpo_disable_freq = <883000>;
+
+		/* IFPO */
+		ifpo_type = <IFPO_ABORT>;
+		ifpo_cal_id = <0x23>;
+	};
+};
