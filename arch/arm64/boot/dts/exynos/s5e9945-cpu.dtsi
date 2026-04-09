@@ -458,7 +458,7 @@
 			dm-type = <DM_CPUCL0>;
 			dss-type = <ESS_FLAG_CPU_CL0>;
 
-			min-freq = <400000>;
+			min-freq = <267000>;
 
 			fast-switch;
 			thread-run-on = "0-3";
@@ -469,7 +469,8 @@
 			ect-coeff-index = <3>;
 			tz-cooling-name = "LITTLE";
 
-			freq-table = <  400000
+			freq-table = <  267000
+					400000
 					576000
 					672000
 					768000
@@ -496,7 +497,7 @@
 			dm-type = <DM_CPUCL1L>;
 			dss-type = <ESS_FLAG_CPU_CL1L>;
 
-			min-freq = <672000>;
+			min-freq = <267000>;
 
 			fast-switch;
 			thread-run-on = "0-3";
@@ -507,7 +508,9 @@
 			ect-coeff-index = <2>;
 			tz-cooling-name = "MIDL";
 
-			freq-table = <  576000
+			freq-table = <  267000
+					400000
+					576000
 					672000
 					768000
 					864000
@@ -537,7 +540,7 @@
 			dm-type = <DM_CPUCL1H>;
 			dss-type = <ESS_FLAG_CPU_CL1H>;
 
-			min-freq = <672000>;
+			min-freq = <267000>;
 
 			fast-switch;
 			thread-run-on = "0-3";
@@ -548,7 +551,9 @@
 			ect-coeff-index = <1>;
 			tz-cooling-name = "MIDH";
 
-			freq-table = <  576000
+			freq-table = <  267000
+					400000
+					576000
 					672000
 					768000
 					864000
@@ -582,7 +587,7 @@
 			dm-type = <DM_CPUCL2>;
 			dss-type = <ESS_FLAG_CPU_CL2>;
 
-			min-freq = <672000>;
+			min-freq = <267000>;
 
 			fast-switch;
 			thread-run-on = "0-3";
@@ -593,7 +598,9 @@
 			ect-coeff-index = <0>;
 			tz-cooling-name = "BIG";
 
-			freq-table = <  576000
+			freq-table = <  267000
+					400000
+					576000
 					672000
 					768000
 					864000
